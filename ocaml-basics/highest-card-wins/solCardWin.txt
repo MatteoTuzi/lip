@@ -2,6 +2,6 @@ type card = Joker | Val of int;;
 
 let win p d = match d with
     Joker -> false
-  | _ -> if p = Joker then true else if ((p > Val 1) && (p < Val 10)) || ((d > Val 1) && (d < Val 10)) then 
+  | _ -> if p = Joker then true else if ((p > Val 1) && (p < Val 10)) && ((d > Val 1) && (d < Val 10)) then 
         if p > d then true else false
       else failwith "Value not defined in set";;
