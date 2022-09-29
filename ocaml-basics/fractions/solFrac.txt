@@ -1,0 +1,14 @@
+let is_frac (a,b) = b != 0;;
+let is_posfrac (a,b) = is_frac (a,b) && a > 0 && b > 0;;
+
+let checkGreater (a,b) (c,d) = if (a*d) = (b*c) then 0 else if (a*d) > (b*c) then 1 else -1;;
+let compare_posfrac (a,b) (c,d) = if is_posfrac (a,b) && is_posfrac(c,d) 
+  then checkGreater (a,b) (c,d)
+  else failwith "fractions must be positive";;
+
+let compare_frac (a,b) (c,d) = if is_frac (a,b) && is_frac (c,d) then checkGreater (a,b) (c,d)
+  else failwith "Den mustn't be zero";;
+
+assert (compare_posfrac (1,2) (2,4) == 0);;
+assert (compare_posfrac (1,2) (1,3) == 1);;
+assert (compare_posfrac (1,2) (2,3) == -1);;
