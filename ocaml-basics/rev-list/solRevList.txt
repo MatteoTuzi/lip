@@ -1,0 +1,3 @@
+let rec rev l = match l with
+    [] -> []
+  | h :: l -> (rev l) @ [h];;
