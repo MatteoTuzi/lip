@@ -14,13 +14,8 @@
 %token OR
 %token EOF
 
-%left AND 
-%left OR
-%right NOT
-
-%start <andBoolExpr> prog
-
-
+%start <andb
+oolExpr> prog
 %%
 
 
@@ -31,9 +26,9 @@ prog:
 expr:
   | TRUE { True }
   | FALSE { False }
-  | NOT; e=expr; { Not e }
-  | AND; e1=expr; e2=expr; { And(e1, e2) }
-  | OR; e1 = expr; e2 = expr; { Or(e1, e2) }
-  | IF; e1=expr; THEN; e2=expr; ELSE; e3=expr; { If(e1, e2, e3) }
+  | AND; e1=expr; e2=expr; {e1 And e2}
+  | OR; e1=expr; e2=expr; {e1 Or e2}
+  | NOT; e=expr; {not e}
+  | IF; e1 = expr; THEN; e2 = expr; ELSE; e3 = expr; { If(e1, e2, e3) }
   | LPAREN; e=expr; RPAREN {e}
 ;
